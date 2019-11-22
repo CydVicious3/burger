@@ -1,8 +1,14 @@
 // setting up MySQL connection in config file
-module.exports = require('mysql2')
-  .createConnection({
-    host: 'kf3k4aywsrp0d2is.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    user: 'eflk96swry4qcjwz',
-    password: 'qzodvhz1oy18258p',
-    database: 'jd5ihdwwmkosdua5'
+var mysql = require('mysql2')
+var connection,
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'qzodvhz1rootoy18258p',
+    database: 'burger_db'
   })
+}
