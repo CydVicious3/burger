@@ -2,7 +2,7 @@ const express = require('express')
 const { join } = require('path')
 
 const app = express()
-
+const port = process.env.PORT || 3000
 // -->middleware<--
 // use public folder for static assets
 app.use(express.static(join(__dirname, 'public')))
@@ -15,4 +15,4 @@ app.set('view engine', '.hbs')
 // makes files send out a function that takes in a parameter
 require('./routes')(app)
 
-app.listen(3000)
+app.listen(port)
