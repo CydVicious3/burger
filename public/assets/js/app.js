@@ -9,12 +9,14 @@ const getBurger = () => {
 }
 // create key value pair with key being the name of variable, the value being the value of variable
 const addBurger = (name) => {
+  console.log("addburger:", name)
   axios.post('/burger', {
     name,
     devoured: false
   })
     .then(() => {
-      console.log('Pizza Added!')
+      console.log('Burger Added!')
+      window.location.reload()
     })
     .catch(e => console.log(e))
 }
@@ -32,12 +34,13 @@ const removeBurger = id => {
     })
     .catch(e => console.log(e))
 }
-document.getElementById('addBurger').addEventListener('click', e => {
+document.getElementById('addBurger').addEventListener('click', () => {
   // run this to prevent default action of + button within form
-  e.preventDefault()
-  addBurger(document.getAnimations('burger').value)
+  event.preventDefault()
+  console.log(document.getElementById('burger').value)
+  addBurger(document.getElementById('burger').value)
   document.getElementById('burger').value = ' '
-  window.location.reload()
+  //window.location.reload()
 })
 
 document.addEventListener('click', e => {

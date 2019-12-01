@@ -9,6 +9,7 @@ module.exports = app => {
   })
   // POST one burger
   app.post('/burger', (req, res) => {
+    console.log("POST: ", req.body)
     addBurger(req.body.name, req.body.devoured, () => {
       res.sendStatus(200)
     })
